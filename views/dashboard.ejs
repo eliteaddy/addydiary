@@ -1,0 +1,83 @@
+<!-- SideBar -->
+<%- include ./partials/sidebar %>
+<!-- End of SideBar -->
+
+<!-- Content Wrapper -->
+<div id="content-wrapper" class="d-flex flex-column">
+  <!-- Main Content -->
+  <div id="content">
+    <!-- Topbar -->
+    <%- include ./partials/navabar %>
+    <!-- End of Topbar -->
+
+    <!-- Begin Page Content -->
+    <div class="container-fluid">
+      <!-- Page Heading -->
+      <div class="container">
+        <div class="d-sm-flex align-items-center justify-content-between mb-4">
+          <h1 class="h3 mb-0 text-gray-800">Hello, Welcome to <%= title %></h1>
+        </div>
+      </div>
+      <div class="container">
+        <% data.forEach(function(data) {%>
+        <div class="row">
+          <div class="col-xl-12 col-md-12 mb-4">
+            <div class="card border-left-info shadow h-100 py-2">
+              <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                  <div class="col mr-2">
+                    <div class="row no-gutters align-items-center">
+                      <div class="col-sm-10 col-xs-12">
+                        <a
+                          href="#id<%= data._id %>"
+                          class="no-design-link"
+                          data-toggle="collapse"
+                          role="button"
+                          aria-expanded="true"
+                          aria-controls="<%= data.title %>"
+                        >
+                          <div class="h5 mb-0 font-weight-bold text-gray-800">
+                            <%= data.title %>
+                          </div>
+                        </a>
+                      </div>
+                      <div class="col-sm-2 col-xs-12 d-sm-flex align-items-center justify-content-between">
+                        <div class="row">
+                          <div class="col-xs-6">
+                            <a class="btn btn-sm text-info"
+                              >- <%= data.type %></a
+                            >
+                          </div>
+                          <div class="col-xs-6">
+                            <form
+                              action="/dashboard/deletenote/<%= data._id %>"
+                              method="POST"
+                            >
+                              <button
+                                type="submit"
+                                class="btn btn-danger btn-circle"
+                              >
+                                <i class="fas fa-trash"></i>
+                              </button>
+                            </form>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- Card Content - Collapse -->
+              <div class="collapse hidden" id="id<%= data._id %>">
+                <div class="card-body">
+                  <%= data.content %>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <% }); %>
+      </div>
+    </div>
+  </div>
+</div>

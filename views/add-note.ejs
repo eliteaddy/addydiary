@@ -1,0 +1,114 @@
+<!-- SideBar -->
+<%- include ./partials/sidebar %>
+<!-- End of SideBar -->
+
+      <!-- Content Wrapper -->
+      <div id="content-wrapper" class="d-flex flex-column">
+          <!-- Main Content -->
+          <div id="content">
+<!-- Topbar -->
+<%- include ./partials/navabar %>
+<!-- End of Topbar -->
+
+<!--<h1>Add Note</h1>
+<form action="/addnote" method="POST">
+    <label for="title">Title:</label><br>
+    <input type="text" name="title" placeholder="Title" required> <br><br>
+    <label for="contents">Contents:</label><br>
+    <input type="text" name="contents" placeholder="Contents" required> <br><br>
+    <input type="radio" name="type" id="private">
+    <input type="radio" name="type" id="public">
+    <input type="submit" value="Save">
+</form>-->
+
+<section class="container">
+  <h1 class="text-center">Add Note</h1>
+  <div class="row" style="margin: 0 auto;">
+    <div class="col-sm-12">
+      <form class="user" action="/addnote" method="POST">
+        <div class="form-group">
+          <label class="col-sm-2 control-label" for="title">Title</label>
+          <div class="col-sm-12">
+            <input
+              class="form-control form-control-user"
+              type="text"
+              id="the_title"
+              name="title"
+              onkeyup="changeAlias();"
+              placeholder="Content Title"
+              required
+            />
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-sm-2 control-label" for="contents">Content</label>
+          <div class="col-sm-12">
+            <textarea
+              class="form-control"
+              rows="10"
+              placeholder="Type your message"
+              name="contents"
+              required
+            ></textarea>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="col-sm-2 control-label" for="url">Url</label>
+          <div class="col-sm-12">
+            <input
+              class="form-control form-control-user"
+              type="text"
+              id="the_url"
+              name="url"
+              required
+            />
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-sm-5">
+            <label for="myty">Select Type:</label>
+            <select class="form-control" name="type" id="myty">
+              <option value="private" selected>Private</option>
+              <option value="public">Public</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-sm-12">
+            <button
+              class="btn btn-success col-sm-offset-2 col-sm-12"
+              type="submit"
+            >
+              Submit
+            </button>
+          </div>
+        </div>
+        <div class="form-group hidden" style="visibility: hidden;">
+          <label class="col-sm-2 control-label" for="user_name">Name</label>
+          <div class="col-sm-12">
+            <input
+              class="form-control"
+              type="text"
+              name="user_name"
+              value="<%= user.name %>"
+              required
+            />
+          </div>
+        </div>
+        <div class="form-group hidden" style="visibility: hidden;">
+          <label class="col-sm-2 control-label" for="user_email">Email</label>
+          <div class="col-sm-12">
+            <input
+              class="form-control form-control-user"
+              type="text"
+              name="user_email"
+              value="<%= user.email %>"
+              required
+            />
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
